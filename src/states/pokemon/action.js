@@ -1,7 +1,7 @@
 import pokemonSlice from "./reducer";
 import { getPokemons } from "../../services/pokemons";
 
-const { setPokemons } = pokemonSlice.actions;
+const { setPokemons, selectDefault, selectAZ, selectZA } = pokemonSlice.actions;
 
 export const fetchPokemons = () => async dispatch => {
     const response = await getPokemons();
@@ -11,4 +11,20 @@ export const fetchPokemons = () => async dispatch => {
     // catch (e) {
     //     return console.error([e.message]);
     // }
+};
+
+export const selectPokemons = () => async dispatch => {
+    await dispatch(selectDefault());
+};
+
+export const filterAZ = () => async dispatch => {
+    await dispatch(selectAZ());
+};
+
+export const filterZA = () => async dispatch => {
+    await dispatch(selectZA());
+};
+
+export const filterHighest = () => async dispatch => {
+    await dispatch(selectAZ());
 };

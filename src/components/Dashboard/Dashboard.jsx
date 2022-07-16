@@ -2,16 +2,17 @@ import PokeCard from "../PokeCard/PokeCard";
 import { useSelector } from "react-redux";
 
 const Dashboard = () => {
-  const { pokemons } = useSelector(state => state.pokemon);
-  console.log(pokemons);
+  const { selectedPokemons } = useSelector(state => state.pokemon);
+  console.log(selectedPokemons);
   return (
     <div>
       {
-        pokemons.map((p) => (
+        selectedPokemons.map((p) => (
           <PokeCard
             key={`${p.name}_${p.number}`}
             name={p.name}
-            number={p.number}
+            number={p.id}
+            photo={p.sprites.front_default}
           />
         ))
       }
