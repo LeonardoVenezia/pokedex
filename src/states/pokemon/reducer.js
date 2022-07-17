@@ -16,25 +16,33 @@ const pokemonSlice = createSlice({
             state.selectedPokemons = state.pokemons.slice(0, 20); // todo: constante
         },
         selectZA: (state) => {
-            state.selectedPokemons = state.pokemons.sort((a, b) => {
+            const newPoke = state.pokemons.sort((a, b) => {
                 if (a.name > b.name) return -1;
                 if (a.name < b.name) return 1;
                 return 0;
             })
-            state.selectedPokemons = state.pokemons.slice(0, 20); // todo: constante
+            state.selectedPokemons = newPoke.slice(0, 20); // todo: constante
         },
         selectAZ: (state) => {
-            state.selectedPokemons = state.pokemons.sort((a, b) => {
+            const newPoke = state.pokemons.sort((a, b) => {
                 if (a.name < b.name) return -1;
                 if (a.name > b.name) return 1;
+                return 0;
+            })
+            state.selectedPokemons = newPoke.slice(0, 20); // todo: constante
+        },
+        selectLowest: (state) => {
+            state.selectedPokemons = state.pokemons.sort((a, b) => {
+                if (a.id < b.id) return -1;
+                if (a.id > b.id) return 1;
                 return 0;
             })
             state.selectedPokemons = state.pokemons.slice(0, 20); // todo: constante
         },
         selectHighest: (state) => {
             state.selectedPokemons = state.pokemons.sort((a, b) => {
-                if (a.name < b.name) return -1;
-                if (a.name > b.name) return 1;
+                if (a.id > b.id) return -1;
+                if (a.id < b.id) return 1;
                 return 0;
             })
             state.selectedPokemons = state.pokemons.slice(0, 20); // todo: constante

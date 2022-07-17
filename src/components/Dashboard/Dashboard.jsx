@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 const Dashboard = () => {
   const { selectedPokemons } = useSelector(state => state.pokemon);
-  console.log(selectedPokemons);
+
   return (
     <div>
       {
