@@ -1,8 +1,8 @@
 import './App.css';
 import { useEffect } from 'react';
-import Searcher from './components/Searcher/Searcher';
-import Dashboard from './components/Dashboard/Dashboard';
-import { fetchPokemons, selectPokemons } from './states/pokemon/action';
+import Searcher from '../../components/Searcher/Searcher';
+import Dashboard from '../../components/Dashboard/Dashboard';
+import { fetchPokemons, selectPokemons } from '../../states/pokemon/action';
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 

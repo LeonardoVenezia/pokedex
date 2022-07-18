@@ -1,32 +1,42 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
-    fetchPokemons,
     filterAZ,
     filterZA,
     filterHighest,
     filterLowest,
 } from "../../states/pokemon/action";
 
+const filtersActions = {
+    "A-Z": filterAZ,
+    "Z-A": filterZA,
+    Highest: filterHighest,
+    Lowest: filterLowest,
+};
 const Searcher = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
+    const { pokemons } = useSelector(state => state.pokemon);
     const [text, setText] = useState('');
+    const [error, setError] = useState(false);
+
     const handleChangeText = (e) => {
-        setText(e.target.value);
+        setError(false);
+        setText(e.target.value.toLowercase());
     };
+
     const handleSubmit = async (e) => {
-        dispatch(fetchPokemons());
         e.preventDefault();
+        const pokeSearcher = pokemons.find(p => p.name === text);
+        if (pokeSearcher) navigate(`/pokemon/${pokeSearcher.id}`);
+        setError(!!pokeSearcher);
     };
+
     const handleChangeFilter = (e) => {
-        const filtersActions = {
-            "A-Z": filterAZ,
-            "Z-A": filterZA,
-            Highest: filterHighest,
-            Lowest: filterLowest,
-        };
         dispatch(filtersActions[e.target.value]());
     };
+
     return (
         <div>
             <div>
@@ -39,9 +49,11 @@ const Searcher = () => {
             </div>
             <form onSubmit={handleSubmit}>
                 <input
+                    className={`${error && 'error'}`}
                     type="text"
                     onChange={handleChangeText}
                     value={text}
+                    placeholder="Pokename"
                 />
                 <input type="submit" value="Search" />
             </form>
