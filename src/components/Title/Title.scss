@@ -1,0 +1,49 @@
+@import "../../styles/global.scss";
+@import "../../styles/types.scss";
+
+.Title {
+    font-size: $size-2;
+    color: $colorOne;
+    text-align: center;
+    text-transform: uppercase;
+
+    &.Title {
+
+        &--grass,
+        &--bug,
+        &--poison {
+            @include grassBugPoison;
+        }
+
+        &--normal,
+        &--flying,
+        &--fighting {
+            @include normalFlyingFighting;
+        }
+
+        &--dragon,
+        &--fire {
+            @include dragonFire;
+        }
+
+        &--psychic,
+        &--ghost {
+            @include psychicGhost;
+        }
+
+        &--ice,
+        &--water {
+            @include iceWater;
+        }
+
+        &--rock,
+        &--ground {
+            @include rockGround;
+        }
+
+        &--electric,
+        &--fairy {
+            @include eletricFairy;
+        }
+    }
+}
