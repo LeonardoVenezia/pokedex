@@ -1,0 +1,22 @@
+@import "../../styles/global.scss";
+
+.Layout {
+    background-color: $colorBlank;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__main {
+        padding: 0 10%;
+    }
+
+    &__footer {
+        background-color: $colorOne;
+        padding: $size-1;
+    }
+
+    &__footerText {
+        text-align: center;
+    }
+}

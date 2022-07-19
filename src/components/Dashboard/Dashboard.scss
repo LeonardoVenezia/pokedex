@@ -1,0 +1,12 @@
+@import "../../styles/global.scss";
+
+.Dashboard {
+    padding: $size-1 0;
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        row-gap: $size-1;
+        column-gap: $size-1;
+    }
+}

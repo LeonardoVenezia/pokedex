@@ -1,0 +1,34 @@
+@mixin grassBugPoison {
+    color: $colorThree;
+    border-color: $colorThree;
+}
+
+@mixin normalFlyingFighting {
+    color: $colorFive;
+    border-color: $colorFive;
+}
+
+@mixin dragonFire {
+    color: $colorFour;
+    border-color: $colorFour;
+}
+
+@mixin psychicGhost {
+    color: $colorSeven;
+    border-color: $colorSeven;
+}
+
+@mixin iceWater {
+    color: $colorTwo;
+    border-color: $colorTwo;
+}
+
+@mixin rockGround {
+    color: $colorSix;
+    border-color: $colorSix;
+}
+
+@mixin eletricFairy {
+    color: $colorOne;
+    border-color: $colorOne;
+}

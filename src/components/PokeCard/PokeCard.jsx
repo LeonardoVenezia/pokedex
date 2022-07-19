@@ -1,9 +1,14 @@
-const PokeCard = ({ name, number, photo }) => {
+import "./PokeCard.scss";
+
+const PokeCard = ({ name, number, photo, type }) => {
     return (
-        <div>
-            <p>{name}</p>
-            <p>{number}</p>
-            <img src={photo} alt={name} />
+        <div className={`PokeCard ${type}`}>
+            <p className={`PokeCard__name ${type}`}>{number}. {name}</p>
+            <img
+                className="PokeCard__img"
+                src={photo}
+                alt={name}
+            />
         </div>
     );
 };

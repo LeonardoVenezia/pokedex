@@ -7,6 +7,7 @@ import {
     filterHighest,
     filterLowest,
 } from "../../states/pokemon/action";
+import "./Searcher.scss";
 
 const filtersActions = {
     "A-Z": filterAZ,
@@ -23,12 +24,13 @@ const Searcher = () => {
 
     const handleChangeText = (e) => {
         setError(false);
-        setText(e.target.value.toLowercase());
+        setText(e.target.value);
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const pokeSearcher = pokemons.find(p => p.name === text);
+        const lowerText = text.toLowerCase();
+        const pokeSearcher = pokemons.find(p => p.name === lowerText);
         if (pokeSearcher) navigate(`/pokemon/${pokeSearcher.id}`);
         setError(!!pokeSearcher);
     };
@@ -38,24 +40,31 @@ const Searcher = () => {
     };
 
     return (
-        <div>
-            <div>
-                <select name="filter" id="filter" onChange={handleChangeFilter}>
+        <div className="Searcher">
+            <form onSubmit={handleSubmit} className="Searcher__form">
+                <select
+                    className="Searcher__select"
+                    name="filter"
+                    id="filter"
+                    onChange={handleChangeFilter}
+                >
                     <option value="Lowest">Lowest</option>
                     <option value="Highest">Highest</option>
                     <option value="A-Z">A-Z</option>
                     <option value="Z-A">Z-A</option>
                 </select>
-            </div>
-            <form onSubmit={handleSubmit}>
                 <input
-                    className={`${error && 'error'}`}
+                    className={`Searcher__name${error ? '--error' : ''}`}
                     type="text"
                     onChange={handleChangeText}
                     value={text}
                     placeholder="Pokename"
                 />
-                <input type="submit" value="Search" />
+                <input
+                    className="Searcher__submit"
+                    type="submit"
+                    value="Search"
+                />
             </form>
         </div>
     );

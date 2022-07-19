@@ -1,0 +1,64 @@
+@import "../../styles/global.scss";
+@import "../../styles/types.scss";
+
+.PokeCard {
+    border: 1px solid;
+    border-radius: $size-1;
+    padding: $size-1;
+    transform: scale(1);
+    transition: transform ease-in-out .3s;
+    box-shadow: $shadow;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    &__name {
+        color: $colorOne;
+        text-transform: uppercase;
+    }
+
+    &__img {
+        display: block;
+        margin: auto;
+        height: 96px;
+        width: 96px;
+    }
+}
+
+.grass,
+.bug,
+.poison {
+    @include grassBugPoison;
+}
+
+.normal,
+.flying,
+.fighting {
+    @include normalFlyingFighting;
+}
+
+.dragon,
+.fire {
+    @include dragonFire;
+}
+
+.psychic,
+.ghost {
+    @include psychicGhost;
+}
+
+.ice,
+.water {
+    @include iceWater;
+}
+
+.rock,
+.ground {
+    @include rockGround;
+}
+
+.electric,
+.fairy {
+    @include eletricFairy;
+}

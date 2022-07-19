@@ -1,11 +1,11 @@
-import './App.css';
+import './Home.css';
 import { useEffect } from 'react';
 import Searcher from '../../components/Searcher/Searcher';
 import Dashboard from '../../components/Dashboard/Dashboard';
 import { fetchPokemons, selectPokemons } from '../../states/pokemon/action';
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-
+import Layout from '../../components/Layout/Layout';
 function App() {
   const dispatch = useDispatch();
   const { pokemons } = useSelector(state => state.pokemon);
@@ -18,10 +18,9 @@ function App() {
   }, [pokemons]);
 
   return (
-    <div>
-      <Searcher />
-      <Dashboard pokemons={[{ name: "pikachu", number: 1 }]} />
-    </div>
+    <Layout extraHeader={<Searcher />}>
+      <Dashboard />
+    </Layout>
   );
 }
 

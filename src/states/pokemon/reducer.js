@@ -15,7 +15,7 @@ const pokemonSlice = createSlice({
             state.isLoading = false;
         },
         selectDefault: (state) => {
-            state.selectedPokemons = state.pokemons.slice(0, POKE_AMOUNST);
+            state.selectedPokemons = state.pokemons;
         },
         selectZA: (state) => {
             const newPoke = state.pokemons.sort((a, b) => order(a.name, b.name));
