@@ -1,4 +1,3 @@
-import './Home.css';
 import { useEffect } from 'react';
 import Searcher from '../../components/Searcher/Searcher';
 import Dashboard from '../../components/Dashboard/Dashboard';

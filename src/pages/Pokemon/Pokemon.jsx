@@ -1,45 +1,37 @@
-import { selectedPokemons } from "react";
+import Layout from "../../components/Layout/Layout";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Details from "../../components/Details/Details";
+import { fetchSinglePokemon } from "../../services/pokemons";
 
 const Pokemon = () => {
     const params = useParams();
     const { selectedPokemons } = useSelector(state => state.pokemon);
-    const [pokedata, setPokedata] = useState({});
+    const [pokedata, setPokedata] = useState(null);
     useEffect(() => {
-        const id = Number(params.id);
-        const findPoke = selectedPokemons.find((i) => i.id === id);
-        setPokedata(findPoke);
+        (async () => {
+            const id = Number(params.id);
+            let findPoke = selectedPokemons.find((i) => i.id === id);
+            if (!findPoke) {
+                findPoke = await fetchSinglePokemon(params.id);
+            }
+            setPokedata(findPoke);
+        })()
     }, []);
     return (
-        <div>
-            <p>{pokedata?.name}</p>
-            <ul>
-                {
-                    pokedata?.types?.map((a) => (
-                        <li key={a.type.name}>{a.type.name}</li>
-                    ))
-                }
-            </ul>
-            <img src={pokedata?.sprites?.front_default} alt="" />
-            <h2>Abilities</h2>
-            <ul>
-                {
-                    pokedata?.abilities?.map((a) => (
-                        <li key={a.ability.name}>{a.ability.name}</li>
-                    ))
-                }
-            </ul>
-            <h3>Moves</h3>
-            <ul>
-                {
-                    pokedata?.moves?.map((a) => (
-                        <li key={a.move.name}>{a.move.name}</li>
-                    ))
-                }
-            </ul>
-        </div>
+        <Layout
+            title={pokedata?.name}
+            type={pokedata?.types[0].type.name}
+        >
+            <Details
+                name={pokedata?.name}
+                types={pokedata?.types}
+                img={pokedata?.sprites?.front_default}
+                imgShiny={pokedata?.sprites?.front_shiny}
+                abilities={pokedata?.abilities}
+            />
+        </Layout>
     );
 };
 

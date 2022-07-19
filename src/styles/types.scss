@@ -32,3 +32,40 @@
     color: $colorOne;
     border-color: $colorOne;
 }
+
+@mixin grassBugPoisonBackground {
+    opacity: 0.8;
+    background-image: radial-gradient(circle at center center, $colorThree, $colorBlank),
+        repeating-radial-gradient(circle at center center, $colorThree, $colorThree, 10px, transparent 20px, transparent 10px);
+    background-blend-mode: multiply;
+}
+
+@mixin normalFlyingFightingBackground {
+    color: $colorFive;
+    border-color: $colorFive;
+}
+
+@mixin dragonFireBackground {
+    color: $colorFour;
+    border-color: $colorFour;
+}
+
+@mixin psychicGhostBackground {
+    color: $colorSeven;
+    border-color: $colorSeven;
+}
+
+@mixin iceWaterBackground {
+    color: $colorTwo;
+    border-color: $colorTwo;
+}
+
+@mixin rockGroundBackground {
+    color: $colorSix;
+    border-color: $colorSix;
+}
+
+@mixin eletricFairyBackground {
+    color: $colorOne;
+    border-color: $colorOne;
+}

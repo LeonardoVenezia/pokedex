@@ -14,7 +14,6 @@
     }
 
     &__name {
-        color: $colorOne;
         text-transform: uppercase;
     }
 
@@ -24,41 +23,41 @@
         height: 96px;
         width: 96px;
     }
-}
 
-.grass,
-.bug,
-.poison {
-    @include grassBugPoison;
-}
+    &.grass,
+    &.bug,
+    &.poison {
+        @include grassBugPoison;
+    }
 
-.normal,
-.flying,
-.fighting {
-    @include normalFlyingFighting;
-}
+    &.normal,
+    &.flying,
+    &.fighting {
+        @include normalFlyingFighting;
+    }
 
-.dragon,
-.fire {
-    @include dragonFire;
-}
+    &.dragon,
+    &.fire {
+        @include dragonFire;
+    }
 
-.psychic,
-.ghost {
-    @include psychicGhost;
-}
+    &.psychic,
+    &.ghost {
+        @include psychicGhost;
+    }
 
-.ice,
-.water {
-    @include iceWater;
-}
+    &.ice,
+    &.water {
+        @include iceWater;
+    }
 
-.rock,
-.ground {
-    @include rockGround;
-}
+    &.rock,
+    &.ground {
+        @include rockGround;
+    }
 
-.electric,
-.fairy {
-    @include eletricFairy;
+    &.electric,
+    &.fairy {
+        @include eletricFairy;
+    }
 }

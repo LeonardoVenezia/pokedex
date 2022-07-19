@@ -1,8 +1,8 @@
 import "./Title.scss";
 
-const Title = ({ title }) => {
+const Title = ({ title, type = "electric" }) => {
     return (
-        <h1 className="title">{title}</h1>
+        <h1 className={`Title Title--${type}`}>{title}</h1>
     );
 };
 
